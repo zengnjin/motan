@@ -34,6 +34,11 @@ public abstract class AbstractRefererConfig extends AbstractInterfaceConfig {
     protected String p99;
     protected String p999;
     protected String errorRate;
+    protected Integer backupRequstDelayTime;
+    protected String backupRequstDelayRatio;
+    protected String backupRequstSwitcherName;
+    protected Integer backupRequstDelayWaterLine;
+    protected String backupRequstMaxRetryRatio;
 
     public String getMean() {
         return mean;
@@ -75,5 +80,43 @@ public abstract class AbstractRefererConfig extends AbstractInterfaceConfig {
         this.errorRate = errorRate;
     }
 
+    public Integer getBackupRequstDelayTime() {
+        return backupRequstDelayTime;
+    }
 
+    public void setBackupRequstDelayTime(Integer backupRequstDelayTime) {
+        this.backupRequstDelayTime = backupRequstDelayTime;
+    }
+
+    public String getBackupRequstDelayRatio() {
+        return backupRequstDelayRatio;
+    }
+
+    public void setBackupRequstDelayRatio(String backupRequstDelayRatio) {
+        this.backupRequstDelayRatio = backupRequstDelayRatio;
+    }
+
+    public String getBackupRequstSwitcherName() {
+        return backupRequstSwitcherName;
+    }
+
+    public void setBackupRequstSwitcherName(String backupRequstSwitcherName) {
+        this.backupRequstSwitcherName = backupRequstSwitcherName;
+    }
+
+    public Integer getBackupRequstDelayWaterLine() {
+        return backupRequstDelayWaterLine;
+    }
+
+    public void setBackupRequstDelayWaterLine(Integer backupRequstDelayWaterLine) {
+        this.backupRequstDelayWaterLine = backupRequstDelayWaterLine;
+    }
+
+    public String getBackupRequstMaxRetryRatio() {
+        return backupRequstMaxRetryRatio;
+    }
+
+    public void setBackupRequstMaxRetryRatio(String backupRequstMaxRetryRatio) {
+        this.backupRequstMaxRetryRatio = backupRequstMaxRetryRatio;
+    }
 }

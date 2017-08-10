@@ -309,6 +309,10 @@ public class StatsUtil {
         }
     }
 
+    public static String getHistogramName(){
+        return MetricRegistry.name(AccessStatisticItem.class, "costTimeMillis");
+    }
+
     public enum AccessStatus {
         NORMAL, BIZ_EXCEPTION, OTHER_EXCEPTION
     }

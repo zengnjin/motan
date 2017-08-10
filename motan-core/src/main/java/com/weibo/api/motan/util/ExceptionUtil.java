@@ -26,29 +26,72 @@ import com.weibo.api.motan.exception.MotanBizException;
  */
 public class ExceptionUtil {
 
-    /**
-     * 判定是否是业务方的逻辑抛出的异常
-     * 
-     * <pre>
+	public static final StackTraceElement[] REMOTE_MOCK_STACK = new StackTraceElement[] {
+			new StackTraceElement("remoteClass", "remoteMethod", "remoteFile", 1) };
+
+	/**
+	 * 判定是否是业务方的逻辑抛出的异常
+	 * 
+	 * <pre>
 	 * 		true: 来自业务方的异常
 	 * 		false: 来自框架本身的异常
 	 * </pre>
-     * 
-     * @param e
-     * @return
-     */
-    public static boolean isBizException(Exception e) {
-        return e instanceof MotanBizException;
-    }
+	 * 
+	 * @param e
+	 * @return
+	 */
+	public static boolean isBizException(Exception e) {
+		return e instanceof MotanBizException;
+	}
 
+	/**
+	 * 判定是否是业务方的逻辑抛出的异常
+	 * 
+	 * <pre>
+	 * 		true: 来自业务方的异常
+	 * 		false: 来自框架本身的异常
+	 * </pre>
+	 * 
+	 * @param e
+	 * @return
+	 */
+	public static boolean isBizException(Throwable e) {
+		return e instanceof MotanBizException;
+	}
 
-    /**
-     * 是否框架包装过的异常
-     * 
-     * @param e
-     * @return
-     */
-    public static boolean isMotanException(Exception e) {
-        return e instanceof MotanAbstractException;
-    }
+	/**
+	 * 是否框架包装过的异常
+	 * 
+	 * @param e
+	 * @return
+	 */
+	public static boolean isMotanException(Exception e) {
+		return e instanceof MotanAbstractException;
+	}
+
+	/**
+	 * 是否框架包装过的异常
+	 * 
+	 * @param e
+	 * @return
+	 */
+	public static boolean isMotanException(Throwable e) {
+		return e instanceof MotanAbstractException;
+	}
+
+	/**
+	 * 覆盖给定exception的stack信息，server端产生业务异常时调用此类屏蔽掉server端的异常栈。
+	 * 
+	 * 
+	 * @param e
+	 */
+	public static void setMockStackTrace(Throwable e) {
+		if (e != null) {
+			try {
+				e.setStackTrace(REMOTE_MOCK_STACK);
+			} catch (Exception e1) {
+				LoggerUtil.warn("replace remote exception stack fail!" + e1.getMessage());
+			}
+		}
+	}
 }

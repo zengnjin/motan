@@ -16,3 +16,4 @@
 
 com.weibo.api.motan.cluster.ha.FailoverHaStrategy
 com.weibo.api.motan.cluster.ha.FailfastHaStrategy
+com.weibo.api.motan.cluster.ha.BackupRequestHaStrategy
